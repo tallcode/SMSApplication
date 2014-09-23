@@ -133,7 +133,6 @@ namespace SMSApplication
 			Console.WriteLine("HTTP Server Running......");
             AlertService = new AlertClass();
             SMSService = new SMSClass();
-            //SMSService.Add("15858268873", "Hello World");
         }
     }
 }
