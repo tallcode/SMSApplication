@@ -38,7 +38,7 @@ namespace SMSApplication
             //加入到防火墙的管理策略
             foreach (INetFwOpenPort mPort in netFwMgr.LocalPolicy.CurrentProfile.GloballyOpenPorts)
             {
-				//已经存在策略不重复添加
+                //已经存在策略不重复添加
                 if (objPort == mPort)
                 {
                     exist = true;
@@ -105,7 +105,7 @@ namespace SMSApplication
         public static void NonblockingListener()
         {
             HttpListener listener = new HttpListener();
-			//需要管理员权限
+            //需要管理员权限
             listener.Prefixes.Add("http://127.0.0.1:9090/");
             listener.Start();
             while (true)
@@ -117,7 +117,7 @@ namespace SMSApplication
                 // while the asynchronous operation completes.
                 result.AsyncWaitHandle.WaitOne();
             }
-        }		
+        }
 
         static void Main(string[] args)
         {
@@ -126,11 +126,11 @@ namespace SMSApplication
                 Console.WriteLine("Windows XP SP2 or Server 2003 is required to use the HttpListener class.");
                 return;
             }
-			//添加防火墙例外
+            //添加防火墙例外
             NetFwAddPorts("SMS Service",9090,"TCP");
             Thread httpServer = new Thread(NonblockingListener);
             httpServer.Start();
-			Console.WriteLine("HTTP Server Running......");
+            Console.WriteLine("HTTP Server Running......");
             AlertService = new AlertClass();
             SMSService = new SMSClass();
         }
